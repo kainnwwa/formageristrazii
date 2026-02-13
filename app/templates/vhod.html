@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход</title>
+</head>
+<body>
+    <h2>Вход на сайт</h2>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    
+    <form method="post" action="{% url 'vhod' %}">
+        {% csrf_token %}
+        <p>
+            <label>Имя пользователя:</label><br>
+            <input type="text" name="username" required>
+        </p>
+        <p>
+            <label>Пароль:</label><br>
+            <input type="password" name="password" required>
+        </p>
+        <p>
+            <input type="submit" value="Войти">
+        </p>
+    </form>
+    
+    <p><a href="{% url 'glavnay' %}">На главную</a></p>
+</body>
+</html>
