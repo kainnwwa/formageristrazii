@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Главная страница</title>
 </head>
 <body>
+    <h1>Главная страница</h1>
+    
     {% if user.is_authenticated %}
-        <h1>Здравствуйте, {{ user.username }}!</h1>
-        <form action="{% url 'logout' %}" method="post">
+        <p>Вы вошли как: <strong>{{ user.username }}</strong></p>
+        <a href="{% url 'lichni' %}">Перейти в личный кабинет</a><br>
+        
+        <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
-            <input type="submit" value="Выход">
+            <button type="submit">Выйти</button>
         </form>
     {% else %}
-        <h1>Добро пожаловать!</h1>
-        <a href="{% url 'vhod' %}">Вход</a>
+        <a href="{% url 'login' %}">Войти в систему</a>
     {% endif %}
 </body>
 </html>

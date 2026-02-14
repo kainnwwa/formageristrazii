@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+</head>
+<body>
+    <h1>Здравствуйте, {{ username }}!</h1>
+    
+    <h2>Личный кабинет</h2>
+    <p>Добро пожаловать в ваш личный кабинет.</p>
+    
+    <a href="{% url 'glavnay' %}">Вернуться на главную</a><br>
+    
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Выйти</button>
+    </form>
+</body>
+</html>
